@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sg5555 — 個人開発の出荷台帳</title>
+<meta name="description" content="96日で11本。Vanilla JS と Python で作った個人開発アプリの一覧。株価分析、収支管理、3D地球儀、Gmailクライアントなど。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="sg5555 — 個人開発の出荷台帳">
+<meta property="og:description" content="96日で11本。Vanilla JS と Python で作った個人開発アプリの一覧。">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#050d1a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🛠</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<header class="hero">
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+  <div class="aurora aurora-3"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">個人開発 / Vanilla JS・Python・Vercel</p>
+    <h1 class="hero-name">sg5555</h1>
+    <p class="hero-lead">
+      作ったものは全部、自分が毎日使うためのものです。株価の分析、家計簿、朝のニュース、世界の監視。
+      欲しかったから作って、そのまま使っています。
+    </p>
+    <p class="hero-lead">
+      フロントは Vanilla HTML / CSS / JavaScript、バックエンドは Python、ホスティングは Vercel と GitHub Actions。
+      フレームワークはほとんど使っていません。
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">11</span>
+        <span class="stat-label">出荷したアプリ</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">96</span>
+        <span class="stat-label">最初の1行からの日数</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2,252</span>
+        <span class="stat-label">コミット</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">114,000</span>
+        <span class="stat-label">コード行数（テスト含む・概算）</span>
+      </div>
+    </div>
+    <p class="stats-note">2026年5月19日から2026年8月23日まで。公開URLを持つものが10本、うち9本が本番稼働中。</p>
+
+    <nav class="hero-links">
+      <a class="hlink" href="https://github.com/sg55555" target="_blank" rel="noopener">GitHub</a>
+      <a class="hlink" href="https://zenn.dev/sg5555" target="_blank" rel="noopener">Zenn</a>
+      <a class="hlink hlink-ghost" href="#works">出荷物を見る</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="section" id="works">
+  <div class="section-head">
+    <h2>出荷物</h2>
+    <p class="section-sub">出荷順。数字はすべて実測値です。</p>
+  </div>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="card-top">
+        <span class="card-num">01</span>
+        <time class="card-date">2026-05-19</time>
+      </div>
+      <h3 class="card-title">Strategic Investment Portal</h3>
+      <p class="card-desc">日米の株式・ETF 84銘柄を分析する投資ダッシュボード。「お金の司令室」を統合しています。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>21MBの静的データを Neon Postgres と遅延ハイドレートに置き換え、初回ロードを 21MB から 84KB に削減しました。投資助言まわりは公開クライアントを決定論的な教育表示に限り、助言は本人専用サーバ側に隔離する2層構成で規制安全を担保しています。</p>
+      <ul class="tags"><li>Vanilla JS</li><li>Python</li><li>Neon Postgres</li><li>Vercel</li></ul>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://strategic-investment-portal.vercel.app" target="_blank" rel="noopener">Live</a>
+          <a class="btn btn-src" href="https://github.com/sg55555/strategic-investment-portal" target="_blank" rel="noopener">Source</a>
+        </div>
+        <span class="card-meta">406 commits / 約40,700行</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="card-num">02</span>
+        <time class="card-date">2026-05-20</time>
+      </div>
+      <h3 class="card-title">収支ダッシュボード（kakeibo）</h3>
+      <p class="card-desc">Notion を台帳に使う個人向けの収支管理。13種のインタラクティブチャートで支出を追います。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>公開リリースを前提に監査を自分で107件洗い出し、P0止血、API堅牢性、フロント安全化、セキュリティヘッダー配信（CSP / X-Content-Type-Options / X-Frame-Options / Referrer-Policy / Permissions-Policy / COOP）まで段階的に本番投入しました。テストは pytest 145 と e2e 18。</p>
+      <ul class="tags"><li>Python</li><li>Notion API</li><li>Chart.js</li><li>Vercel</li></ul>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://kakeibo-dashboard-sigma.vercel.app" target="_blank" rel="noopener">Live</a>
+          <span class="gate">ログインが必要</span>
+        </div>
+        <span class="card-meta">96 commits / 9,144行</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="card-num">03</span>
+        <time class="card-date">2026-05-23</time>
+      </div>
+      <h3 class="card-title">Morning Brief（news-digest）</h3>
+      <p class="card-desc">毎朝137記事を RSS で収集し、Claude で要約して上位10件を配信するニュース PWA。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>収集と要約を GitHub Actions の cron に寄せ、配信側はサーバー処理を持たない構成にしました。以降のアプリで使っている濃紺ダークのデザイン言語は、このアプリで決まったものです。</p>
+      <ul class="tags"><li>Python</li><li>RSS</li><li>Claude API</li><li>PWA</li></ul>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://news-digest-tan.vercel.app" target="_blank" rel="noopener">Live</a>
+          <a class="btn btn-src" href="https://github.com/sg55555/news-digest" target="_blank" rel="noopener">Source</a>
+        </div>
+        <span class="card-meta">56 commits / 1,910行</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="card-num">04</span>
+        <time class="card-date">2026-05-25</time>
+      </div>
+      <h3 class="card-title">task-dashboard</h3>
+      <p class="card-desc">Notion（タスク / 学習 / 読書 / シフト）と Google Calendar を統合した管理ダッシュボード。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>シフトが二重生成されるバグの根因を3段の連鎖まで特定しました。6観点26エージェントの敵対的レビューと、本番の読み取り専用診断の両輪で残存0件を確認してからクローズしています。</p>
+      <ul class="tags"><li>Notion API</li><li>Google Calendar</li><li>Python</li></ul>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://task-dashboard-rose-alpha.vercel.app" target="_blank" rel="noopener">Live</a>
+          <span class="gate">ログインが必要</span>
+        </div>
+        <span class="card-meta">77 commits / 6,980行</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="card-num">05</span>
+        <time class="card-date">2026-05-28</time>
+      </div>
+      <h3 class="card-title">smart-mail</h3>
+      <p class="card-desc">Gmail API を AI支援（返信下書き、連絡先抽出、カレンダー連携）付きで使うメールクライアント PWA。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>task-dashboard と OAuth クライアントが1つの GCP プロジェクトに同居していたために起きる <code>invalid_grant</code> 失効バグを、GCP プロジェクト分離で恒久解決しました。デザイン「C1 Deep Aquarium」は複数案をブラウザで実物比較して選んでいます。</p>
+      <ul class="tags"><li>Gmail API</li><li>OAuth</li><li>Claude API</li><li>PWA</li></ul>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://smart-mail-sable.vercel.app" target="_blank" rel="noopener">Live</a>
+          <span class="gate">ログインが必要</span>
+        </div>
+        <span class="card-meta">111 commits / 9,759行</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="card-num">06</span>
+        <time class="card-date">2026-06-03</time>
+      </div>
+      <h3 class="card-title">nexus</h3>
+      <p class="card-desc">7ソースのデータを1か所に集約する、暗号化された中間DB兼サイバーパンク調ダッシュボード（12ページ）。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>ブラウザ内の AES-GCM 復号（PBKDF2 鍵導出）と、transformers.js によるブラウザ内の意味検索を自前で実装しました。サーバに平文を置かないまま全文検索ができます。</p>
+      <ul class="tags"><li>AES-GCM</li><li>transformers.js</li><li>Python</li><li>Vercel</li></ul>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://nexus-sg5555.vercel.app" target="_blank" rel="noopener">Live</a>
+          <span class="gate">パスフレーズが必要</span>
+        </div>
+        <span class="card-meta">410 commits / 10,939行</span>
+      </div>
+    </article>
+
+    <article class="card card-featured">
+      <div class="card-top">
+        <span class="card-num">07</span>
+        <time class="card-date">2026-06-13</time>
+      </div>
+      <h3 class="card-title">orbis</h3>
+      <p class="card-desc">無料の OSINT だけで世界を近リアルタイムに監視する3D地球儀ダッシュボード。11のデータレイヤー、AI合成インテリジェンス3本、全11,600地域のドリルダウン。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>月額0円で運用が回る設計です。収集は GitHub Actions の cron、配信は静的 JSON、描画はクライアント補間の3層に分け、Vercel のサーバーレス関数を1本も使っていません。テストは node 643 と pytest 423 が全緑。</p>
+      <ul class="tags"><li>MapLibre GL</li><li>deck.gl</li><li>GitHub Actions</li><li>Python</li></ul>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://orbis-beta.vercel.app" target="_blank" rel="noopener">Live</a>
+          <a class="btn btn-src" href="https://github.com/sg55555/orbis" target="_blank" rel="noopener">Source</a>
+        </div>
+        <span class="card-meta">942 commits / 約26,600行</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="card-num">08</span>
+        <time class="card-date">2026-06-17</time>
+      </div>
+      <h3 class="card-title">hortus</h3>
+      <p class="card-desc">庭・芝生・植栽の手入れを、カメラと天気と Notion タスクで支援する PWA。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>Plant.id（種同定）と Claude（助言）を組み合わせたハイブリッドAIエンジン。写真スキャンから候補確認、承認、登録までのフローを設計しました。</p>
+      <ul class="tags"><li>Plant.id</li><li>Claude API</li><li>PWA</li><li>Notion API</li></ul>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://hortus-silk.vercel.app" target="_blank" rel="noopener">Live</a>
+        </div>
+        <span class="card-meta">102 commits / 3,900行</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="card-num">09</span>
+        <time class="card-date">2026-06-18</time>
+      </div>
+      <h3 class="card-title">live-translate <span class="status status-local">ローカル稼働</span></h3>
+      <p class="card-desc">再生中のタブの音声から日本語字幕をリアルタイム生成する、完全ローカル動作の翻訳エンジン。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>cross-origin の YouTube iframe から音声を取れないという動かせない制約を、<code>getDisplayMedia</code> のタブ音声共有で迂回しました。APIキー不要で100%ローカルで動きます。orbis のニュース字幕としても結線しています。</p>
+      <ul class="tags"><li>Web Audio</li><li>getDisplayMedia</li><li>Python</li></ul>
+      <div class="card-foot">
+        <div class="card-links"></div>
+        <span class="card-meta">28 commits / 2,243行</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="card-num">10</span>
+        <time class="card-date">2026-07-16</time>
+      </div>
+      <h3 class="card-title">旧ブログの静的化移設</h3>
+      <p class="card-desc">休眠していた WordPress ブログを静的化し、XServer から Vercel へ移設。記事、URL、AdSense、SEO、SNSリンクを全保全しました。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>年間およそ11,500円のコストを削減しています。ドメインの利用期限は XServer の管理画面ではなく Verisign の RDAP から直接引いて一次情報で確定させました（管理画面は特典適用中に期限を表示しません）。</p>
+      <ul class="tags"><li>WordPress 静的化</li><li>DNS / RDAP</li><li>Vercel</li></ul>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://sgservice55.com" target="_blank" rel="noopener">Live</a>
+        </div>
+        <span class="card-meta">NS切替実測日で計上</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="card-num">11</span>
+        <time class="card-date">2026-08-22</time>
+      </div>
+      <h3 class="card-title">stoa</h3>
+      <p class="card-desc">心理的自立の鍛錬を目的にした自分専用の学習プラットフォーム（哲学、教養、身体、実地の4トラック）。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>SM-2 系の復習キュー（SRS）を自前で実装しました。認証なしの公開URLでもプライバシーが漏れないよう、Notion のシフトは生データを配信せず、判定済みのモードだけを配信する設計にしています。</p>
+      <ul class="tags"><li>SRS / SM-2</li><li>Notion API</li><li>Vanilla JS</li></ul>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://stoa-zeta.vercel.app" target="_blank" rel="noopener">Live</a>
+          <span class="gate">記録は端末内</span>
+        </div>
+        <span class="card-meta">23 commits / 1,683行</span>
+      </div>
+    </article>
+
+    <article class="card card-extra">
+      <div class="card-top">
+        <span class="card-num">番外</span>
+        <time class="card-date">2026-06-28</time>
+      </div>
+      <h3 class="card-title">app-control <span class="status status-pending">デプロイ待ち</span></h3>
+      <p class="card-desc">他アプリの AI処理をボタン1つで GitHub Actions から起動する PWA。</p>
+      <p class="card-proud"><span class="proud-label">自慢できる点</span>GitHub の PAT をコードに埋め込まず、端末の localStorage だけに置いています。サーバー関数はゼロで、GitHub API を直接叩きます。ソースに秘密が1つも無いので、公開しても安全な作りです。</p>
+      <ul class="tags"><li>GitHub API</li><li>PWA</li><li>Vanilla JS</li></ul>
+      <div class="card-foot">
+        <div class="card-links"></div>
+        <span class="card-meta">1 commit / 447行</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="section" id="writing">
+  <div class="section-head">
+    <h2>書いたもの</h2>
+    <p class="section-sub">開発の過程を記事にしています。</p>
+  </div>
+
+  <div class="grid grid-writing">
+    <article class="card card-article">
+      <div class="card-top">
+        <span class="card-num">記事</span>
+        <time class="card-date">2026-08-23</time>
+      </div>
+      <h3 class="card-title">Vercelの関数を1本も使わずに、無料OSINTだけで「世界の今」を映す地球儀を作った</h3>
+      <p class="card-desc">orbis の設計（収集 / 配信 / 描画の3層分割）と、途中で踏んだ3つの罠。globe の静かなフォールバック、IconLayer の全滅、cron がデプロイ枠を食い潰す話。約8,900字。</p>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://zenn.dev/sg5555/articles/orbis-osint-globe" target="_blank" rel="noopener">Zenn で読む</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card card-article">
+      <div class="card-top">
+        <span class="card-num">記事</span>
+        <time class="card-date">2026-08-23</time>
+      </div>
+      <h3 class="card-title">テストは全部緑だった。エラーを出さずに壊れていた6つのバグと、その捕まえ方</h3>
+      <p class="card-desc">エラーが出ないことは、動いていることの証拠になりません。1,000件超のテストが全部緑のまま見逃していた6つのバグを5つの型に分けて整理しました。約6,400字。</p>
+      <div class="card-foot">
+        <div class="card-links">
+          <a class="btn btn-live" href="https://zenn.dev/sg5555/articles/orbis-silent-bugs" target="_blank" rel="noopener">Zenn で読む</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="before">
+  <div class="section-head">
+    <h2>出荷以前</h2>
+    <p class="section-sub">コードを書く前から続けているもの。</p>
+  </div>
+  <div class="before-list">
+    <div class="before-item">
+      <h3>合気道</h3>
+      <p>歴代最速で初段。指導補助の経験があります（現在は離籍）。</p>
+    </div>
+    <div class="before-item">
+      <h3>柔軟</h3>
+      <p>10年継続。激硬から人並み以上へ。180度開脚まで到達しました。</p>
+    </div>
+    <div class="before-item">
+      <h3>書くこと</h3>
+      <p>上の身体知を文章にしたものが、移設した旧ブログに残っています。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p class="footer-main">このページも Vanilla HTML / CSS / JavaScript です。ビルドもフレームワークもサーバー関数も使っていません。</p>
+  <p class="footer-sub">最終更新 2026-08-23 ／ <a href="https://github.com/sg55555" target="_blank" rel="noopener">GitHub</a> ／ <a href="https://zenn.dev/sg5555" target="_blank" rel="noopener">Zenn</a></p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

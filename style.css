@@ -1,0 +1,510 @@
+/* ------------------------------------------------------------------
+   sg5555 portfolio — 濃紺ダーク + オーロラ
+   オーロラ（blur の面）は .hero の中だけに閉じ込める。
+   カード群の背後に光の面を置くと backdrop-filter がパネル形に取り込んで
+   四角く滲むため、カード領域の背景演出は粒子だけにしている。
+   ------------------------------------------------------------------ */
+
+:root {
+  --bg-primary:    #050d1a;
+  --bg-secondary:  #0a1628;
+  --bg-tertiary:   #0f1e35;
+  --accent-blue:   #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-green:  #10b981;
+  --accent-cyan:   #22d3ee;
+  --text-primary:  #e2e8f0;
+  --text-secondary:#94a3b8;
+  --text-dim:      #64748b;
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN",
+               "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+               "Liberation Mono", monospace;
+  --maxw: 1180px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: var(--accent-cyan); }
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  color: #cbd5e1;
+}
+
+/* 全画面パーティクル（点のみ・面は置かない） */
+#particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- hero */
+
+.hero {
+  position: relative;
+  overflow: hidden;                 /* オーロラをこの中に閉じ込める */
+  z-index: 1;
+  padding: clamp(72px, 12vw, 150px) 24px clamp(56px, 8vw, 96px);
+  background:
+    linear-gradient(180deg, var(--bg-secondary) 0%, rgba(10, 22, 40, 0.4) 60%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+}
+
+.aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.16;
+  pointer-events: none;
+  animation: float 9s ease-in-out infinite;
+}
+.aurora-1 { width: 620px; height: 320px; background: var(--accent-blue);   top: -130px; left: -120px; }
+.aurora-2 { width: 560px; height: 300px; background: var(--accent-purple); top: -90px;  right: -110px; animation-delay: -4.5s; }
+.aurora-3 { width: 480px; height: 260px; background: var(--accent-cyan);   bottom: -160px; left: 38%; opacity: 0.1; animation-delay: -2.2s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(30px) scale(1.06); }
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+}
+
+.hero-name {
+  margin: 0 0 22px;
+  font-family: var(--font-mono);
+  font-size: clamp(42px, 8vw, 76px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  background: linear-gradient(100deg, #e2e8f0 0%, #93c5fd 45%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-lead {
+  max-width: 62ch;
+  margin: 0 0 14px;
+  font-size: clamp(15px, 1.6vw, 17px);
+  color: var(--text-secondary);
+}
+
+/* 数字。オーロラの上に乗るので backdrop-filter は使わない */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin: 38px 0 12px;
+}
+
+.stat {
+  padding: 20px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(5, 13, 26, 0.62);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.stat:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+
+.stat-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(28px, 4.4vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  text-shadow: 0 0 26px rgba(59, 130, 246, 0.45);
+}
+
+.stat-label {
+  display: block;
+  margin-top: 6px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
+.stats-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.hlink {
+  display: inline-block;
+  padding: 11px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  background: rgba(59, 130, 246, 0.14);
+  color: #dbeafe;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.hlink:hover {
+  background: rgba(59, 130, 246, 0.26);
+  border-color: rgba(59, 130, 246, 0.75);
+  transform: translateY(-2px);
+}
+.hlink-ghost {
+  border-color: var(--border-strong);
+  background: transparent;
+  color: var(--text-secondary);
+}
+.hlink-ghost:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--text-dim); }
+
+/* ------------------------------------------------------------ sections */
+
+main { position: relative; z-index: 1; }
+
+.section {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(56px, 8vw, 92px) 24px 0;
+}
+
+.section-head { margin-bottom: 32px; }
+
+.section-head h2 {
+  display: inline-block;
+  margin: 0;
+  font-size: clamp(22px, 3vw, 28px);
+  letter-spacing: 0.04em;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.5);
+}
+
+.section-sub {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+/* --------------------------------------------------------------- cards */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+.grid-writing { grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.card-featured {
+  border-color: rgba(34, 211, 238, 0.34);
+  box-shadow: 0 0 34px rgba(34, 211, 238, 0.09) inset;
+}
+.card-featured:hover { border-color: rgba(34, 211, 238, 0.6); }
+
+.card-extra { border-style: dashed; }
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.card-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent-cyan);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.card-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.card-title {
+  margin: 0 0 10px;
+  font-size: 19px;
+  line-height: 1.45;
+  color: #f1f5f9;
+}
+
+.card-article .card-title { font-size: 17.5px; }
+
+.status {
+  display: inline-block;
+  margin-left: 8px;
+  vertical-align: middle;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.status-local   { background: rgba(148, 163, 184, 0.16); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); }
+.status-pending { background: rgba(234, 179, 8, 0.14);  color: #fde68a; border: 1px solid rgba(234, 179, 8, 0.32); }
+
+.card-desc {
+  margin: 0 0 14px;
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.card-proud {
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: #cbd5e1;
+  background: rgba(59, 130, 246, 0.07);
+  border-left: 2px solid rgba(59, 130, 246, 0.55);
+  border-radius: 0 10px 10px 0;
+}
+
+.proud-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent-blue);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 3px 9px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.card-links { display: flex; gap: 8px; }
+
+.btn {
+  display: inline-block;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-live {
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #6ee7b7;
+}
+.btn-live:hover { background: rgba(16, 185, 129, 0.26); border-color: rgba(16, 185, 129, 0.7); }
+
+.btn-src {
+  background: rgba(139, 92, 246, 0.13);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  color: #c4b5fd;
+}
+.btn-src:hover { background: rgba(139, 92, 246, 0.26); border-color: rgba(139, 92, 246, 0.7); }
+
+.gate {
+  align-self: center;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  border: 1px dashed var(--border-strong);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.card-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-dim);
+}
+
+/* スクリーンショット枠。後から各カードの .card-title 直後に
+   <img class="card-shot" src="shots/<name>.png" alt="<name> の画面" loading="lazy">
+   を1行足すだけで入る。画像は shots/ に置く。 */
+.card-shot {
+  display: block;
+  width: calc(100% + 4px);
+  margin: 0 -2px 14px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-tertiary);
+}
+
+/* -------------------------------------------------------------- before */
+
+.before-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.before-item {
+  padding: 22px 24px;
+  border: 1px solid var(--border);
+  border-left: 2px solid rgba(139, 92, 246, 0.5);
+  border-radius: 0 12px 12px 0;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.before-item h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: #e9d5ff;
+}
+
+.before-item p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* -------------------------------------------------------------- footer */
+
+.footer {
+  position: relative;
+  z-index: 1;
+  max-width: var(--maxw);
+  margin: clamp(64px, 9vw, 110px) auto 0;
+  padding: 32px 24px 56px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-main {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.footer-sub {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+
+.footer-sub a { color: var(--text-secondary); text-decoration: none; }
+.footer-sub a:hover { color: var(--accent-cyan); }
+
+/* ------------------------------------------------------- reveal / a11y */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .aurora { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .card:hover, .stat:hover, .hlink:hover { transform: none; }
+}
+
+@media (max-width: 640px) {
+  body { line-height: 1.75; }
+  .grid, .grid-writing { grid-template-columns: 1fr; }
+  .card {
+    /* モバイルは blur を切る（負荷対策） */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(10, 22, 40, 0.72);
+    padding: 20px 18px 18px;
+  }
+  .card-foot { align-items: flex-start; }
+}
