@@ -96,6 +96,7 @@
         <time class="card-date">2026-05-20</time>
       </div>
       <h3 class="card-title">収支ダッシュボード（kakeibo）</h3>
+      <img class="card-shot" src="shots/kakeibo.webp" alt="収支ダッシュボードの画面（月間KPI と年間サマリー・金額はぼかし）" loading="lazy">
       <p class="card-desc">Notion を台帳に使う個人向けの収支管理。13種のインタラクティブチャートで支出を追います。</p>
       <p class="card-proud"><span class="proud-label">自慢できる点</span>公開リリースを前提に監査を自分で107件洗い出し、P0止血、API堅牢性、フロント安全化、セキュリティヘッダー配信（CSP / X-Content-Type-Options / X-Frame-Options / Referrer-Policy / Permissions-Policy / COOP）まで段階的に本番投入しました。テストは pytest 145 と e2e 18。</p>
       <ul class="tags"><li>Python</li><li>Notion API</li><li>Chart.js</li><li>Vercel</li></ul>
@@ -133,6 +134,7 @@
         <time class="card-date">2026-05-25</time>
       </div>
       <h3 class="card-title">task-dashboard</h3>
+      <img class="card-shot" src="shots/task-dashboard.webp" alt="task-dashboard の画面（週カレンダーと学習ログ・予定名はぼかし）" loading="lazy">
       <p class="card-desc">Notion（タスク / 学習 / 読書 / シフト）と Google Calendar を統合した管理ダッシュボード。</p>
       <p class="card-proud"><span class="proud-label">自慢できる点</span>シフトが二重生成されるバグの根因を3段の連鎖まで特定しました。6観点26エージェントの敵対的レビューと、本番の読み取り専用診断の両輪で残存0件を確認してからクローズしています。</p>
       <ul class="tags"><li>Notion API</li><li>Google Calendar</li><li>Python</li></ul>
@@ -151,6 +153,7 @@
         <time class="card-date">2026-05-28</time>
       </div>
       <h3 class="card-title">smart-mail</h3>
+      <img class="card-shot" src="shots/smart-mail.webp" alt="smart-mail の画面（3ペインの受信トレイ・件名はぼかし）" loading="lazy">
       <p class="card-desc">Gmail API を AI支援（返信下書き、連絡先抽出、カレンダー連携）付きで使うメールクライアント PWA。</p>
       <p class="card-proud"><span class="proud-label">自慢できる点</span>task-dashboard と OAuth クライアントが1つの GCP プロジェクトに同居していたために起きる <code>invalid_grant</code> 失効バグを、GCP プロジェクト分離で恒久解決しました。デザイン「C1 Deep Aquarium」は複数案をブラウザで実物比較して選んでいます。</p>
       <ul class="tags"><li>Gmail API</li><li>OAuth</li><li>Claude API</li><li>PWA</li></ul>
@@ -169,6 +172,7 @@
         <time class="card-date">2026-06-03</time>
       </div>
       <h3 class="card-title">nexus</h3>
+      <img class="card-shot" src="shots/nexus.webp" alt="nexus の画面（DATA COCKPIT の概況）" loading="lazy">
       <p class="card-desc">7ソースのデータを1か所に集約する、暗号化された中間DB兼サイバーパンク調ダッシュボード（12ページ）。</p>
       <p class="card-proud"><span class="proud-label">自慢できる点</span>ブラウザ内の AES-GCM 復号（PBKDF2 鍵導出）と、transformers.js によるブラウザ内の意味検索を自前で実装しました。サーバに平文を置かないまま全文検索ができます。</p>
       <ul class="tags"><li>AES-GCM</li><li>transformers.js</li><li>Python</li><li>Vercel</li></ul>
