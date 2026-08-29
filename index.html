@@ -77,6 +77,7 @@
         <time class="card-date">2026-05-19</time>
       </div>
       <h3 class="card-title">Strategic Investment Portal</h3>
+      <img class="card-shot" src="shots/investment-portal.webp" alt="Strategic Investment Portal の画面（市場の温度感・セクター別騰落）" loading="lazy">
       <p class="card-desc">日米の株式・ETF 84銘柄を分析する投資ダッシュボード。「お金の司令室」を統合しています。</p>
       <p class="card-proud"><span class="proud-label">自慢できる点</span>21MBの静的データを Neon Postgres と遅延ハイドレートに置き換え、初回ロードを 21MB から 84KB に削減しました。投資助言まわりは公開クライアントを決定論的な教育表示に限り、助言は本人専用サーバ側に隔離する2層構成で規制安全を担保しています。</p>
       <ul class="tags"><li>Vanilla JS</li><li>Python</li><li>Neon Postgres</li><li>Vercel</li></ul>
@@ -113,6 +114,7 @@
         <time class="card-date">2026-05-23</time>
       </div>
       <h3 class="card-title">Morning Brief（news-digest）</h3>
+      <img class="card-shot" src="shots/news-digest.webp" alt="Morning Brief の画面（ニュース要約カード）" loading="lazy">
       <p class="card-desc">毎朝137記事を RSS で収集し、Claude で要約して上位10件を配信するニュース PWA。</p>
       <p class="card-proud"><span class="proud-label">自慢できる点</span>収集と要約を GitHub Actions の cron に寄せ、配信側はサーバー処理を持たない構成にしました。以降のアプリで使っている濃紺ダークのデザイン言語は、このアプリで決まったものです。</p>
       <ul class="tags"><li>Python</li><li>RSS</li><li>Claude API</li><li>PWA</li></ul>
@@ -185,6 +187,7 @@
         <time class="card-date">2026-06-13</time>
       </div>
       <h3 class="card-title">orbis</h3>
+      <img class="card-shot" src="shots/orbis.webp" alt="orbis の画面（地球儀にレイヤーとイベントフィード）" loading="lazy">
       <p class="card-desc">無料の OSINT だけで世界を近リアルタイムに監視する3D地球儀ダッシュボード。11のデータレイヤー、AI合成インテリジェンス3本、全11,600地域のドリルダウン。</p>
       <p class="card-proud"><span class="proud-label">自慢できる点</span>月額0円で運用が回る設計です。収集は GitHub Actions の cron、配信は静的 JSON、描画はクライアント補間の3層に分け、Vercel のサーバーレス関数を1本も使っていません。テストは node 643 と pytest 423 が全緑。</p>
       <ul class="tags"><li>MapLibre GL</li><li>deck.gl</li><li>GitHub Actions</li><li>Python</li></ul>
@@ -209,6 +212,7 @@
       <div class="card-foot">
         <div class="card-links">
           <a class="btn btn-live" href="https://hortus-silk.vercel.app" target="_blank" rel="noopener">Live</a>
+          <span class="gate">キーが必要</span>
         </div>
         <span class="card-meta">102 commits / 3,900行</span>
       </div>
@@ -235,6 +239,7 @@
         <time class="card-date">2026-07-16</time>
       </div>
       <h3 class="card-title">旧ブログの静的化移設</h3>
+      <img class="card-shot" src="shots/blog.webp" alt="静的化した旧ブログのトップページ" loading="lazy">
       <p class="card-desc">休眠していた WordPress ブログを静的化し、XServer から Vercel へ移設。記事、URL、AdSense、SEO、SNSリンクを全保全しました。</p>
       <p class="card-proud"><span class="proud-label">自慢できる点</span>年間およそ11,500円のコストを削減しています。ドメインの利用期限は XServer の管理画面ではなく Verisign の RDAP から直接引いて一次情報で確定させました（管理画面は特典適用中に期限を表示しません）。</p>
       <ul class="tags"><li>WordPress 静的化</li><li>DNS / RDAP</li><li>Vercel</li></ul>
@@ -252,6 +257,7 @@
         <time class="card-date">2026-08-22</time>
       </div>
       <h3 class="card-title">stoa</h3>
+      <img class="card-shot" src="shots/stoa.webp" alt="stoa の画面（今日のコマと連続日数）" loading="lazy">
       <p class="card-desc">心理的自立の鍛錬を目的にした自分専用の学習プラットフォーム（哲学、教養、身体、実地の4トラック）。</p>
       <p class="card-proud"><span class="proud-label">自慢できる点</span>SM-2 系の復習キュー（SRS）を自前で実装しました。認証なしの公開URLでもプライバシーが漏れないよう、Notion のシフトは生データを配信せず、判定済みのモードだけを配信する設計にしています。</p>
       <ul class="tags"><li>SRS / SM-2</li><li>Notion API</li><li>Vanilla JS</li></ul>
@@ -269,12 +275,15 @@
         <span class="card-num">番外</span>
         <time class="card-date">2026-06-28</time>
       </div>
-      <h3 class="card-title">app-control <span class="status status-pending">デプロイ待ち</span></h3>
+      <h3 class="card-title">app-control</h3>
       <p class="card-desc">他アプリの AI処理をボタン1つで GitHub Actions から起動する PWA。</p>
       <p class="card-proud"><span class="proud-label">自慢できる点</span>GitHub の PAT をコードに埋め込まず、端末の localStorage だけに置いています。サーバー関数はゼロで、GitHub API を直接叩きます。ソースに秘密が1つも無いので、公開しても安全な作りです。</p>
       <ul class="tags"><li>GitHub API</li><li>PWA</li><li>Vanilla JS</li></ul>
       <div class="card-foot">
-        <div class="card-links"></div>
+        <div class="card-links">
+          <a class="btn btn-live" href="https://app-control-eight.vercel.app" target="_blank" rel="noopener">Live</a>
+          <span class="gate">PAT が必要</span>
+        </div>
         <span class="card-meta">1 commit / 447行</span>
       </div>
     </article>
@@ -344,7 +353,7 @@
 
 <footer class="footer">
   <p class="footer-main">このページも Vanilla HTML / CSS / JavaScript です。ビルドもフレームワークもサーバー関数も使っていません。</p>
-  <p class="footer-sub">最終更新 2026-08-23 ／ <a href="https://github.com/sg55555" target="_blank" rel="noopener">GitHub</a> ／ <a href="https://zenn.dev/sg5555" target="_blank" rel="noopener">Zenn</a></p>
+  <p class="footer-sub">最終更新 2026-08-29 ／ <a href="https://github.com/sg55555" target="_blank" rel="noopener">GitHub</a> ／ <a href="https://zenn.dev/sg5555" target="_blank" rel="noopener">Zenn</a></p>
 </footer>
 
 <script src="main.js"></script>
